@@ -9,7 +9,7 @@ gem 'sass-rails', '~> 5.0'
 
 # additional gems =============================================================
 
-
+gem 'bootstrap-sass', '~> 3.3.5'
 # =============================================================================
 
 # Use Uglifier as compressor for JavaScript assets
