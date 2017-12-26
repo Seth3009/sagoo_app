@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Groups</h1>
+<div class="row">
+  <%= link_to 'New Employee', new_employee_path, class: 'btn btn-primary' %>
+</div><br>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Salary</th>
+          <th>Note</th>
+          <th colspan="3">Actions</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.name %></td>
+            <td><%= delimiter(group.salary) %></td>
+            <td><%= group.note %></td>
+            <td><%= link_to 'Show', group %></td>
+            <td><%= link_to 'Edit', edit_group_path(group) %></td>
+            <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group', new_group_path %>
