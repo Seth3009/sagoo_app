@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :position_groups
   resources :locations
   resources :groups
   resources :employees
