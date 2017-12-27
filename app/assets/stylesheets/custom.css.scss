@@ -365,4 +365,31 @@ footer ul li {
     margin-left: 15px;
 }
 
+.btn {
+    color: white !important;
+    text-align: center;
+}
 
+td {
+    vertical-align: middle !important;
+}
+
+th {
+    text-align: center !important;
+    height: 50px !important;
+    vertical-align: middle !important;
+    background-color: mediumseagreen !important;
+}
+
+tr:hover {background-color: #b4b4b4 !important;}
+
+.navbar-title {
+    float: left;
+    font-size: 2.7em;
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight:bold;
+    margin-top: 12px;
+    margin-left: 2px;
+}
