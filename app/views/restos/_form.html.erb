@@ -1,0 +1,51 @@
+<%= form_for(@resto) do |f| %>
+  <% if @resto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resto.errors.count, "error") %> prohibited this resto from being saved:</h2>
+
+      <ul>
+      <% @resto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+      <div class="row">
+          <div class="field">
+            <div class="col-sm-3">
+              <%= f.label :employee_id, "Karyawan : " %>
+            </div>
+            <div class="col-sm-9">
+              <%= f.collection_select :employee_id, Employee.all.order(:name), :id, :name, prompt: true %>
+            </div>
+          </div>
+      </div>  
+      <div class="row">
+          <div class="field">
+            <div class="col-sm-3">
+              <%= f.label :position_group_id, "Jabatan karyawan : " %>
+            </div>
+            <div class="col-sm-9">
+              <%= f.collection_select :position_group_id, PositionGroup.all.order(:name), :id, :name, prompt: true %>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <div class="col-sm-3">
+            <%= f.label :started, "Mulai tanggal : " %>
+            <div class="actions">
+              <%= f.submit :value => "Simpan" %> 
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <%= f.date_field :started %>
+          </div>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :location_id, value:params[:id] %>
+      </div>
+    
+<% end %>
+

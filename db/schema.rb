@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227033615) do
+ActiveRecord::Schema.define(version: 20171227062136) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -51,5 +51,19 @@ ActiveRecord::Schema.define(version: 20171227033615) do
   end
 
   add_index "position_groups", ["group_id"], name: "index_position_groups_on_group_id"
+
+  create_table "restos", force: :cascade do |t|
+    t.date     "started"
+    t.date     "ended"
+    t.integer  "employee_id"
+    t.integer  "position_group_id"
+    t.integer  "location_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "restos", ["employee_id"], name: "index_restos_on_employee_id"
+  add_index "restos", ["location_id"], name: "index_restos_on_location_id"
+  add_index "restos", ["position_group_id"], name: "index_restos_on_position_group_id"
 
 end

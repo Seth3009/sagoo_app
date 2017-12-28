@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Started:</strong>
+  <%= @resto.started %>
+</p>
+
+<p>
+  <strong>Ended:</strong>
+  <%= @resto.ended %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @resto.employee.name %>
+</p>
+
+<p>
+  <strong>Position group:</strong>
+  <%= @resto.position_group.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @resto.location.name %>
+</p>
+
+<%= link_to 'Edit', edit_resto_path(@resto) %> |
+<%= link_to 'Back', restos_path %>

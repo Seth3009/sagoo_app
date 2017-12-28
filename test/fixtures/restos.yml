@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  started: 2017-12-27
+  ended: 2017-12-27
+  employee_id: 
+  position_group_id: 
+  location_id: 
+
+two:
+  started: 2017-12-27
+  ended: 2017-12-27
+  employee_id: 
+  position_group_id: 
+  location_id: 

@@ -391,5 +391,25 @@ tr:hover {background-color: #b4b4b4 !important;}
     letter-spacing: -1px;
     font-weight:bold;
     margin-top: 12px;
-    margin-left: 2px;
+    margin-left: 25px;
+}
+.navbar-title-btn {
+    float: right;
+    font-size: 2em;
+    margin-top: 10px;
+    margin-right: 25px;
+}
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+
+.date select.date.form-control {
+  width: auto;
 }
