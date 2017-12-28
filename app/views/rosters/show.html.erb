@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hari:</strong>
+  <%= @roster.hari %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @roster.detail %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @roster.note %>
+</p>
+
+<%= link_to 'Edit', edit_roster_path(@roster) %> |
+<%= link_to 'Back', rosters_path %>

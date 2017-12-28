@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227062136) do
+ActiveRecord::Schema.define(version: 20171228044329) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -65,5 +65,13 @@ ActiveRecord::Schema.define(version: 20171227062136) do
   add_index "restos", ["employee_id"], name: "index_restos_on_employee_id"
   add_index "restos", ["location_id"], name: "index_restos_on_location_id"
   add_index "restos", ["position_group_id"], name: "index_restos_on_position_group_id"
+
+  create_table "rosters", force: :cascade do |t|
+    t.string   "hari"
+    t.string   "detail"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

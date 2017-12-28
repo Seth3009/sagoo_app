@@ -1,0 +1,29 @@
+<%= form_for(@roster) do |f| %>
+  <% if @roster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@roster.errors.count, "error") %> prohibited this roster from being saved:</h2>
+
+      <ul>
+      <% @roster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hari %><br>
+    <%= f.text_field :hari %>
+  </div>
+  <div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_field :detail %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

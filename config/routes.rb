@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rosters
   resources :restos
   resources :position_groups
   resources :locations
