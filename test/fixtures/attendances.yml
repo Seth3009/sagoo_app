@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  att_month: 2017-12-30
+  day_count: 1
+  group_roster_id: 
+  employee_id: 
+
+two:
+  att_month: 2017-12-30
+  day_count: 1
+  group_roster_id: 
+  employee_id: 

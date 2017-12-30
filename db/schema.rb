@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228044329) do
+ActiveRecord::Schema.define(version: 20171230042525) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.date     "att_month"
+    t.integer  "day_count"
+    t.integer  "group_roster_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "attendances", ["employee_id"], name: "index_attendances_on_employee_id"
+  add_index "attendances", ["group_roster_id"], name: "index_attendances_on_group_roster_id"
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +37,17 @@ ActiveRecord::Schema.define(version: 20171228044329) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "group_rosters", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "roster_id"
+    t.decimal  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "group_rosters", ["group_id"], name: "index_group_rosters_on_group_id"
+  add_index "group_rosters", ["roster_id"], name: "index_group_rosters_on_roster_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -66,6 +89,17 @@ ActiveRecord::Schema.define(version: 20171228044329) do
   add_index "restos", ["location_id"], name: "index_restos_on_location_id"
   add_index "restos", ["position_group_id"], name: "index_restos_on_position_group_id"
 
+  create_table "roster_groups", force: :cascade do |t|
+    t.integer  "roster_id"
+    t.integer  "resto_id"
+    t.decimal  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "roster_groups", ["resto_id"], name: "index_roster_groups_on_resto_id"
+  add_index "roster_groups", ["roster_id"], name: "index_roster_groups_on_roster_id"
+
   create_table "rosters", force: :cascade do |t|
     t.string   "hari"
     t.string   "detail"
@@ -73,5 +107,14 @@ ActiveRecord::Schema.define(version: 20171228044329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "salaries", force: :cascade do |t|
+    t.date     "salary_period"
+    t.integer  "employee_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "salaries", ["employee_id"], name: "index_salaries_on_employee_id"
 
 end

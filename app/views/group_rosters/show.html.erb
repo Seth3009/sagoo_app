@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_roster.group %>
+</p>
+
+<p>
+  <strong>Roster:</strong>
+  <%= @group_roster.roster %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @group_roster.amount %>
+</p>
+
+<%= link_to 'Edit', edit_group_roster_path(@group_roster) %> |
+<%= link_to 'Back', group_rosters_path %>

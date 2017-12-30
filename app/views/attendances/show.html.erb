@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Att month:</strong>
+  <%= @attendance.att_month %>
+</p>
+
+<p>
+  <strong>Day count:</strong>
+  <%= @attendance.day_count %>
+</p>
+
+<p>
+  <strong>Group roster:</strong>
+  <%= @attendance.group_roster %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @attendance.employee %>
+</p>
+
+<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+<%= link_to 'Back', attendances_path %>

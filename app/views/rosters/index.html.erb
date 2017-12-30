@@ -7,7 +7,9 @@
     <tr>
       <th>Hari</th>
       <th>Detail</th>
+      <th>Amount</th>
       <th>Note</th>
+      <th>Group</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +19,9 @@
       <tr>
         <td><%= roster.hari %></td>
         <td><%= roster.detail %></td>
+        <td><%= roster.amount %></td></td>
         <td><%= roster.note %></td>
+        <td><%= roster.group.name %></td>
         <td><%= link_to 'Show', roster %></td>
         <td><%= link_to 'Edit', edit_roster_path(roster) %></td>
         <td><%= link_to 'Destroy', roster, method: :delete, data: { confirm: 'Are you sure?' } %></td>

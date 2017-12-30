@@ -1,0 +1,44 @@
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <p class="navbar-title">Rekap Salary</p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Mulai Kerja</th>
+                <th>No. Rek</th>
+                <th>Golongan</th>
+                <th>Gaji Pokok</th>
+                <th>Kehadiran</th>
+                <th>Total Gaji</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+              
+              <% @attendances.each do |att| %>
+              <tr>
+                <td><%= att.name %> </td>
+                <td><%= att.work_started %></td>
+                <td><%= att.acc_no %></td>
+                <td><%= att.gol %> </td>
+                <td><%= delimiter(att.salary) %> </td>
+                <td><%= delimiter(att.total) %> </td>
+                <td><%= delimiter(att.total+att.salary) %> </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Group Rosters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Roster</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_rosters.each do |group_roster| %>
+      <tr>
+        <td><%= group_roster.group.name %></td>
+        <td><%= group_roster.roster.hari + ' ' + group_roster.roster.detail %></td>
+        <td><%= group_roster.amount %></td>
+        <td><%= link_to 'Show', group_roster %></td>
+        <td><%= link_to 'Edit', edit_group_roster_path(group_roster) %></td>
+        <td><%= link_to 'Destroy', group_roster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group roster', new_group_roster_path %>

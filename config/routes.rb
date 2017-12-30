@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :salaries
+  resources :attendances
+  resources :group_rosters
   resources :rosters
   resources :restos
   resources :position_groups
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get 'restos/:id/new' => 'restos#add_employee', as: :add_employee
+  get 'employees/salary_recap/:month' => 'employees#salary_recap', as: :salary_recap
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,0 +1,120 @@
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <nav class="navbar navbar-inverse">
+    <p class="navbar-title"><%= @resto.location.name %></p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+            <strong>Salary period:</strong>
+            <%= @salary.salary_period.strftime("%B %Y") %>
+      </div>
+      <div class="col-lg-12">
+            <strong>Tanggal Bayar:</strong>
+            <%= "1 " + (@salary.salary_period + 1.month).strftime("%B %Y") %><br>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-lg-12">
+            <strong>Employee:</strong>
+            <%= @salary.employee.name %>
+      </div>
+      <div class="col-lg-12">
+            <strong>Posisi:</strong>
+            <%= @resto.position_group.name + " (" + @resto.position_group.group.name + ")"%>
+      </div>
+     </div><br>
+    <div class="row">
+      <div class="col-lg-9">    
+            <strong>Gaji Pokok:</strong>
+      </div>
+      <div class="col-lg-1 text-right">    
+        Rp.
+      </div>
+      <div class="col-lg-1 text-right">
+            <%= delimiter(@resto.position_group.group.salary) %>
+      </div>
+    </div>
+    <strong>Kehadiran</strong>
+    <% @attendances.each do |att| %>
+      <div class="row justify-content-start">
+        <div class="col-lg-3">
+          <%= att.group_roster.roster.hari + " " + att.group_roster.roster.detail %> 
+        </div>
+        <div class="col-lg-2">
+          <div class="col-sm-1">
+            Rp. 
+          </div>
+          <div class="col-sm-1">
+            <%= delimiter(att.group_roster.amount) %>
+          </div>
+        </div>
+        
+        <div class="col-lg-2">
+          <div class="col-sm-4">
+            x 
+          </div>
+          <div class="col-sm-4 text-right">
+            <%= att.day_count %>
+          </div>
+          <div class="col-lg-4">
+            hari
+          </div>
+        </div>
+        <div class="col-lg-1">
+          = Rp. 
+        </div>
+        <div class="col-md-1 text-right">
+          <%= delimiter(att.group_roster.amount * att.day_count) %>
+        </div>
+          <% @total = @total + att.group_roster.amount * att.day_count %>
+        
+      </div>
+    <% end %>
+    
+    <div class="row justify-content-start">
+        <div class="col-lg-3">
+        </div>  
+        <div class="col-lg-2 text-right">
+            Total kehadiran :
+        </div>
+        <div class="col-lg-2">
+          <div class="col-sm-4">
+             
+          </div>
+          <div class="col-sm-4 text-right">
+            <%= @count %>
+          </div>
+          <div class="col-lg-4">
+            hari
+          </div>
+        </div>
+        
+      </div>
+    
+    
+    <div class="row">
+      <div class="col-lg-9">    
+            <strong>Total :</strong>
+      </div>
+      <div class="col-lg-1 right-text">    
+        Rp.
+      </div>
+      <div class="col-lg-1 right-text">
+            <%= delimiter(@total) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">    
+            
+      </div>
+      <div class="col-lg-1 right-text">    
+        Rp.
+      </div>
+      <div class="col-lg-1 right-text">
+            <%= delimiter(@total + @resto.position_group.group.salary) %> 
+      </div>
+    </div>

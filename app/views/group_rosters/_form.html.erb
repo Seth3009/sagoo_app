@@ -1,0 +1,29 @@
+<%= form_for(@group_roster) do |f| %>
+  <% if @group_roster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group_roster.errors.count, "error") %> prohibited this group_roster from being saved:</h2>
+
+      <ul>
+      <% @group_roster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :group_id %><br>
+    <%= f.text_field :group_id %>
+  </div>
+  <div class="field">
+    <%= f.label :roster_id %><br>
+    <%= f.text_field :roster_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

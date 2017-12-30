@@ -18,6 +18,7 @@
                 <tr>
                   <th>Name</th>
                   <th>Salary</th>
+                  <th>Rosters</th>
                   <th>Note</th>
                   <th>Actions</th>
                 </tr>
@@ -28,6 +29,7 @@
                   <tr>
                     <td><%= group.name %></td>
                     <td><%= delimiter(group.salary) %></td>
+                    <td><%= pluralize(group.rosters.count, "roster") %></td>
                     <td><%= group.note %></td>
                     <td align="center", width="15%">
                         <%= link_to  group  , class: 'btn btn-info' do %>

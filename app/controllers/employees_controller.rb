@@ -61,6 +61,15 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def salary_recap
+    @attendances = Attendance.joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
+   .group(:employee_id).select('sum (group_rosters.amount * attendances.day_count) as total')
+   .joins('left join employees on employees.id = attendances.employee_id')
+   .select('employees.name','employees.work_started','employees.acc_no','groups.name as gol', 'groups.salary')
+   .joins('left join groups on groups.id = group_rosters.group_id')
+   
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
