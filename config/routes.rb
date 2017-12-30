@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :employee_groups
   resources :salaries
   resources :attendances
   resources :group_rosters

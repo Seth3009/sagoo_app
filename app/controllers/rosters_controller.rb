@@ -28,7 +28,7 @@ class RostersController < ApplicationController
 
     respond_to do |format|
       if @roster.save
-        format.html { redirect_to @roster, notice: 'Roster was successfully created.' }
+        format.html { redirect_to rosters_path, notice: 'Roster was successfully created.' }
         format.json { render :show, status: :created, location: @roster }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RostersController < ApplicationController
   def update
     respond_to do |format|
       if @roster.update(roster_params)
-        format.html { redirect_to @roster, notice: 'Roster was successfully updated.' }
+        format.html { redirect_to rosters_path, notice: 'Roster was successfully updated.' }
         format.json { render :show, status: :ok, location: @roster }
       else
         format.html { render :edit }

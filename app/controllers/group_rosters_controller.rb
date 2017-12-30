@@ -69,6 +69,6 @@ class GroupRostersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_roster_params
-      params.require(:group_roster).permit(:group_id, :roster_id, :amount)
+      params.require(:group_roster).permit(:employee_group_id, :roster_id, :amount)
     end
 end

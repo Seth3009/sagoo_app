@@ -1,6 +1,19 @@
-<h1>Editing Roster</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @roster %> |
-<%= link_to 'Back', rosters_path %>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-title-arrow">
+        <p><%= link_to rosters_path do %>  </p>
+            <i class="glyphicon glyphicon-chevron-left"></i>
+        <% end %>
+        Edit Roster
+    </div>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
