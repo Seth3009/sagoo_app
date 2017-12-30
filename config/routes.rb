@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :restos
   resources :position_groups
   resources :locations
-  resources :groups
   resources :employees
   # get 'welcome/index'
 
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'restos/:id/new' => 'restos#add_employee', as: :add_employee
   get 'employees/salary_recap/:month' => 'employees#salary_recap', as: :salary_recap
+  get 'employee_groups/:id/group_rosters' => 'employee_groups#roster_group', as: :roster_group
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

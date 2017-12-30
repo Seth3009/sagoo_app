@@ -28,7 +28,7 @@
                   <tr>
                     <td><%= employee_group.name %></td>
                     <td><%= delimiter(employee_group.salary) %></td>
-                    <td><%= pluralize(employee_group.rosters.count, "roster") %></td>
+                    <td><%= link_to pluralize(employee_group.rosters.count, "roster"), roster_group_path(employee_group) %></td>
                     <td><%= employee_group.note %></td>
                     <td align="center", width="15%">
                         <%= link_to  employee_group  , class: 'btn btn-info' do %>

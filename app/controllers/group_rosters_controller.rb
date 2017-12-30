@@ -28,7 +28,7 @@ class GroupRostersController < ApplicationController
 
     respond_to do |format|
       if @group_roster.save
-        format.html { redirect_to @group_roster, notice: 'Group roster was successfully created.' }
+        format.html { redirect_to :back, notice: 'Group roster was successfully created.' }
         format.json { render :show, status: :created, location: @group_roster }
       else
         format.html { render :new }

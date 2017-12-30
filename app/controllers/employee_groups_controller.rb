@@ -1,5 +1,5 @@
 class EmployeeGroupsController < ApplicationController
-  before_action :set_employee_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee_group, only: [:show, :edit, :update, :destroy, :roster_group]
 
   # GET /employee_groups
   # GET /employee_groups.json
@@ -60,6 +60,13 @@ class EmployeeGroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+ def roster_group
+   @rosters = GroupRoster.where('employee_group_id = ?', params[:id])
+   @golongan = EmployeeGroup.find(params[:id])
+   @group_roster = GroupRoster.new
+ end
 
   private
     # Use callbacks to share common setup or constraints between actions.

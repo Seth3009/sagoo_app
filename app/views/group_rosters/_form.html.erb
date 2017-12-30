@@ -12,16 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :group_id %><br>
-    <%= f.text_field :group_id %>
+    <%= f.hidden_field :employee_group_id, :value => params[:id] %>
   </div>
   <div class="field">
-    <%= f.label :roster_id %><br>
-    <%= f.text_field :roster_id %>
+    <div class="row">
+      <div class="col-lg-1">
+        <%= f.label :roster_id %>
+      </div>
+      <div class="col-lg-8">
+        <%= f.collection_select :roster_id, Roster.all_except(@rosters.ids).order(:hari,:detail), :id, :formatted_name, prompt: true %>
+      </div>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+    <div class="row">
+      <div class="col-lg-1">
+        <%= f.label :amount %>
+      </div>
+      <div class="col-lg-8">
+        <%= f.text_field :amount %>
+      </div>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
