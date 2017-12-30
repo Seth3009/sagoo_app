@@ -62,11 +62,13 @@ class EmployeesController < ApplicationController
   end
 
   def salary_recap
-    @attendances = Attendance.joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
-   .group(:employee_id).select('sum (group_rosters.amount * attendances.day_count) as total')
-   .joins('left join employees on employees.id = attendances.employee_id')
-   .select('employees.name','employees.work_started','employees.acc_no','groups.name as gol', 'groups.salary')
-   .joins('left join groups on groups.id = group_rosters.group_id')
+    @attendances = Employee
+    .joins('left join restos on restos.employee_id = employees.id')
+    .joins('left join position_groups on position_groups.id = restos.position_group_id').joins('left join groups on groups.id = position_groups.group_id')
+    .joins('left join attendances on attendances.employee_id = employees.id')
+    .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
+    .select('employees.name','employees.work_started','employees.acc_no','groups.name as gol', 'groups.salary')
+    .group('employees.id').select('sum (group_rosters.amount * attendances.day_count) as total')
    
   end
   
