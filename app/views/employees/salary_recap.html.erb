@@ -18,6 +18,7 @@
                 <th>Gaji Pokok</th>
                 <th>Kehadiran</th>
                 <th>Total Gaji</th>
+                <th>Lokasi</th>
               </tr>
             </thead>
           
@@ -28,10 +29,11 @@
                 <td><%= att.name %> </td>
                 <td><%= att.work_started %></td>
                 <td><%= att.acc_no %></td>
-                <td><%= att.gol %> </td>
-                <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
+                <td><%= att.groupname %></td>
+                 <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
                 <td><%= att.total.nil? ? "0" : delimiter(att.total) %> </td>
                 <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.total.nil? ? 0 : att.total)) %> </td>
+                <td><%= att.location %> </td>
               </tr>
               <% end %>
             </tbody>

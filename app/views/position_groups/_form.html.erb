@@ -20,8 +20,8 @@
     <%= f.text_area :note %>
   </div>
   <div class="field">
-    <%= f.label :group_id %><br>
-    <%= f.collection_select :group_id, Group.all.order(:name), :id, :name, prompt: true %>
+    <%= f.label :employee_group_id %><br>
+    <%= f.collection_select :employee_group_id, EmployeeGroup.all.order(:name), :id, :name, prompt: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

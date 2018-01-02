@@ -69,6 +69,6 @@ class PositionGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_group_params
-      params.require(:position_group).permit(:name, :note, :group_id)
+      params.require(:position_group).permit(:name, :note, :employee_group_id)
     end
 end
