@@ -75,10 +75,10 @@ class EmployeesController < ApplicationController
    # .where('attendances.att_month = ?', Date.parse("2017-"+params[:month]+"-30"))
    if params[:month].to_i > 12 || params[:month].to_i < 1
           params[:month] = Date.today.month.to_s
-     redirect_to salary_recap_path(params[:month])
+     #redirect_to salary_recap_path(params[:month])
    end
-     
-   Attendance.generate_attendance_form(Date.parse("2017-" + params[:month] + "-01"))
+    
+   Attendance.generate_attendance_form(Date.parse(params[:year]+ "-" + params[:month] + "-1"))
    @attendances = Employee.joins('left join restos on restos.employee_id = employees.id')
    .joins('left join position_groups on position_groups.id = restos.position_group_id')
    .joins('left join employee_groups on employee_groups.id = position_groups.employee_group_id')
@@ -91,7 +91,7 @@ class EmployeesController < ApplicationController
            'sum (group_rosters.amount * attendances.day_count) as total','locations.name as location')
            
     
-      @attendances = @attendances.where('attendances.att_month = ?', Date.parse("2017-"+params[:month]+"-01"))
+      @attendances = @attendances.where('attendances.att_month = ?', Date.parse(params[:year]+"-"+params[:month]+"-1"))
    
    
   end

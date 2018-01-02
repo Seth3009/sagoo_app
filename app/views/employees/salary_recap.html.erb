@@ -1,7 +1,14 @@
 <div class="container">
   <nav class="navbar navbar-inverse">
     <p class="navbar-title">Rekap Salary</p>
-    
+    <p class="pull-right" style="margin-top: 10px; margin-right: 20px;">
+         <%= select_tag 'select_path', options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]}),:prompt => "Pilih Bulan" %>
+         <%= select_tag 'tahun', options_for_select((Date.today.year-5)..(Date.today.year+1)),:prompt => "Pilih Tahun" %>
+         <button type="button" id="myBtn" class="btn btn-primary" style="margin-bottom: 5px;">Refresh</button>
+    </p>
+    <p style='margin-top: 20px; margin-right: 10px', class="navbar-title-arrow pull-right">
+      Periode :
+    </p>
   </nav>
 </div><br>
 <div class="container">
@@ -45,3 +52,16 @@
   </div>
 </div>
 
+<script>
+  document.getElementById("myBtn").onclick = function() {myFunction()};
+    function myFunction() {
+    var selected = document.getElementById('select_path').value;
+    var thn = document.getElementById('tahun').value;
+    var url = "/employees/salary_recap/month=" + selected + "&year=" + thn
+          if (url) {
+              window.location.replace(url);
+          }
+          return false;
+  }
+    
+</script>

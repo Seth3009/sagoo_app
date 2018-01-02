@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get 'restos/:id/new' => 'restos#add_employee', as: :add_employee
-  get 'employees/salary_recap/:month' => 'employees#salary_recap', as: :salary_recap
+  get 'employees/salary_recap/:month&:year' => 'employees#salary_recap', as: :salary_recap
   #match 'employees/salary_recap/:month' => "employees#generate_attendance", :via => :post
   get 'employee_groups/:id/group_rosters' => 'employee_groups#roster_group', as: :roster_group
   
