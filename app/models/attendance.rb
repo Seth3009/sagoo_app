@@ -3,7 +3,7 @@ class Attendance < ActiveRecord::Base
   belongs_to :employee
   has_many :salaries
   
-  def self.generate_attendance_form
+  def self.generate_attendance_form(bulan)
    @employees = Employee.all
     @employees.each do |employee|
       @restos = Resto.where('restos.employee_id = ?', employee.id)
@@ -12,9 +12,9 @@ class Attendance < ActiveRecord::Base
          @positions.each do |position|
           @grouprosters = GroupRoster.where('group_rosters.employee_group_id = ?', position.employee_group_id)
           @grouprosters.each do |gr|
-            @att = self.where('att_month = ? AND group_roster_id = ? AND employee_id = ?',Date.parse('2017-12-1'),gr.id,employee.id).first
+            @att = self.where('att_month = ? AND group_roster_id = ? AND employee_id = ?',bulan,gr.id,employee.id).first
             if @att.blank? then
-              @attendance = self.new(att_month: Date.parse('2017-12-1'), day_count: 0, group_roster_id: gr.id, employee_id: employee.id)
+              @attendance = self.new(att_month: bulan, day_count: 0, group_roster_id: gr.id, employee_id: employee.id)
               @attendance.save
             end
           end

@@ -16,6 +16,7 @@
   <tbody>
     <% @attendances.each do |attendance| %>
       <tr>
+        <td><%= attendance.att_month %></td>
         <td><%= attendance.day_count %></td>
         <td><%= attendance.group_roster.employee_group.name %></td>
         <td><%= attendance.employee.name %></td>
