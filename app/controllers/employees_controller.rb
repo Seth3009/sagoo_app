@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:show, :edit, :update, :destroy, :salary_detail]
 
   # GET /employees
   # GET /employees.json
@@ -94,6 +94,11 @@ class EmployeesController < ApplicationController
       @attendances = @attendances.where('attendances.att_month = ?', Date.parse(params[:year]+"-"+params[:month]+"-1"))
    
    
+  end
+  
+  def salary_detail
+    @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee,Date.parse('2018-1-1')).joins('left join group_rosters on group_rosters.id = attendances.group_roster_id').all
+    @total = @atts.group('attendances.att_month').select('sum (group_rosters.amount * attendances.day_count) as total')
   end
   
   private

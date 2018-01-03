@@ -1,0 +1,47 @@
+
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <p class="navbar-title">Data absensi</p>
+    <p class="navbar-title"><%= @total.att_month %></p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+          
+          <div class="row">
+            <p>Total pembayaran :</p>
+          </div><br>
+          <div class="row">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <th>Hari Kerja</th>
+                    <th>Nilai</th>
+                    <th>Jumlah Hari</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+              
+                <tbody>
+                  <% @atts.each do |att| %>
+                    <tr>
+                      <td>
+                          <%= att.group_roster.roster.hari %>
+                          <%= att.group_roster.roster.detail %>
+                      </td>
+                      <td><%= delimiter(att.group_roster.amount) %></td>
+                      <td><%= att.day_count %></td>
+                      <td><%= delimiter(att.day_count * att.group_roster.amount) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>

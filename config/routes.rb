@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'employees/salary_recap/:month&:year' => 'employees#salary_recap', as: :salary_recap
   #match 'employees/salary_recap/:month' => "employees#generate_attendance", :via => :post
   get 'employee_groups/:id/group_rosters' => 'employee_groups#roster_group', as: :roster_group
+  get 'employees/:id/salary_detail' =>'employees#salary_detail', as: :salary_detail
+  
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
