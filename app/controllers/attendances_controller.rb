@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: [:show, :edit, :update, :destroy]
+  before_action :set_attendance, only: [:show, :edit, :update, :destroy, :discontinue]
 
   # GET /attendances
   # GET /attendances.json
@@ -19,6 +19,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1/edit
   def edit
+
   end
 
   # POST /attendances
@@ -60,6 +61,8 @@ class AttendancesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -98,8 +98,11 @@ class EmployeesController < ApplicationController
   
   def salary_detail
     @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee,Date.parse('2018-1-1')).joins('left join group_rosters on group_rosters.id = attendances.group_roster_id').all
-    @total = @atts.group('attendances.att_month').select('sum (group_rosters.amount * attendances.day_count) as total')
+    @total = @atts.group('attendances.att_month').select('sum (group_rosters.amount * attendances.day_count) as total','attendances.att_month').first
+    
   end
+  
+  
   
   private
     # Use callbacks to share common setup or constraints between actions.
