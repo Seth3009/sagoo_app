@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #get '*path' => redirect('/')
   resources :take_homes
   resources :additional_incomes
   resources :employee_groups
