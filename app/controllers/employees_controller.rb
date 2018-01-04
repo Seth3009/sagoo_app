@@ -87,7 +87,7 @@ class EmployeesController < ApplicationController
    .joins('left join locations on locations.id = restos.location_id')
    .group('employees.id')
    .select('employees.id','employees.name','employees.work_started','employees.acc_no',
-   'employee_groups.salary','locations.name as location',
+   'employee_groups.name','employee_groups.salary','locations.name as location',
    'take_homes.salary as gaji','take_homes.add_income')
    
                         

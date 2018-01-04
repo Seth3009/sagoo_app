@@ -30,8 +30,6 @@
                 <th>Nama</th>
                 <th>Mulai Kerja</th>
                 <th>No. Rek</th>
-                <th>Golongan</th>
-                <th>Gaji Pokok</th>
                 <th>Kehadiran</th>
                 <th>Total Gaji</th>
                 <th>Tambahan</th>
@@ -46,7 +44,6 @@
                 <td><%= link_to att.name, salary_detail_path(att.id,params[:month],params[:year]) %> </td>
                 <td><%= att.work_started %></td>
                 <td><%= att.acc_no %></td>
-                <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
                 <td><%= att.gaji.nil? ? "0" : delimiter(att.gaji) %> </td>
                 <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji)) %> </td>
                 <td><%= att.add_income.nil? ? 0 : delimiter(att.add_income) %> </td>
