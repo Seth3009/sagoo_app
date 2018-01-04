@@ -86,7 +86,7 @@ class EmployeesController < ApplicationController
    .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
    .joins('left join locations on locations.id = restos.location_id')
    .group('employees.id')
-   .select('employees.name','employees.work_started','employees.acc_no',
+   .select('employees.id','employees.name','employees.work_started','employees.acc_no',
            'position_groups.name as position','employee_groups.name as groupname','employee_groups.salary',
            'sum (group_rosters.amount * attendances.day_count) as total','locations.name as location')
            
@@ -97,7 +97,7 @@ class EmployeesController < ApplicationController
   end
   
   def salary_detail
-    @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee,Date.parse('2018-1-1')).joins('left join group_rosters on group_rosters.id = attendances.group_roster_id').all
+    @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1")).joins('left join group_rosters on group_rosters.id = attendances.group_roster_id').all
     @total = @atts.group('attendances.att_month').select('sum (group_rosters.amount * attendances.day_count) as total','attendances.att_month').first
     
   end

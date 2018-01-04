@@ -31,7 +31,7 @@
                           <%= attendance.group_roster.roster.detail %>
                       </td>
                       <td><%= delimiter(attendance.group_roster.amount) %></td>
-                      <td><%= attendance.day_count %></td>
+                      <td><%= best_in_place attendance, :day_count %></td>
                       <td><%= delimiter(attendance.day_count * attendance.group_roster.amount) %></td>
                     </tr>
                   <% end %>

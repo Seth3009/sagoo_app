@@ -11,6 +11,8 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
+
+gem 'best_in_place', '~> 3.0.1'
 # =============================================================================
 
 # Use Uglifier as compressor for JavaScript assets
