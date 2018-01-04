@@ -3,7 +3,7 @@ class CreatePositionGroups < ActiveRecord::Migration
     create_table :position_groups do |t|
       t.string :name
       t.text :note
-      t.references :group, index: true, foreign_key: true
+      t.references :employee_group, index: true, foreign_key: true
 
       t.timestamps null: false
     end
