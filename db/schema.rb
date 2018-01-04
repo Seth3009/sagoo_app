@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104112339) do
+ActiveRecord::Schema.define(version: 20180104155739) do
 
   create_table "additional_incomes", force: :cascade do |t|
     t.date     "add_month"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20180104112339) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "golongans", force: :cascade do |t|
+    t.string   "nama"
+    t.decimal  "gaji"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "group_rosters", force: :cascade do |t|
     t.integer  "employee_group_id"
     t.integer  "roster_id"
@@ -67,14 +75,6 @@ ActiveRecord::Schema.define(version: 20180104112339) do
 
   add_index "group_rosters", ["employee_group_id"], name: "index_group_rosters_on_employee_group_id"
   add_index "group_rosters", ["roster_id"], name: "index_group_rosters_on_roster_id"
-
-  create_table "groups", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "salary"
-    t.text     "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"

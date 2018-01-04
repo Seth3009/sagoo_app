@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nama:</strong>
+  <%= @golongan.nama %>
+</p>
+
+<p>
+  <strong>Gaji:</strong>
+  <%= @golongan.gaji %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @golongan.note %>
+</p>
+
+<%= link_to 'Edit', edit_golongan_path(@golongan) %> |
+<%= link_to 'Back', golongans_path %>

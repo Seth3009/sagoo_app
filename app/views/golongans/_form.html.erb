@@ -1,0 +1,29 @@
+<%= form_for(@golongan) do |f| %>
+  <% if @golongan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@golongan.errors.count, "error") %> prohibited this golongan from being saved:</h2>
+
+      <ul>
+      <% @golongan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nama %><br>
+    <%= f.text_field :nama %>
+  </div>
+  <div class="field">
+    <%= f.label :gaji %><br>
+    <%= f.text_field :gaji %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Golongans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nama</th>
+      <th>Gaji</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @golongans.each do |golongan| %>
+      <tr>
+        <td><%= golongan.nama %></td>
+        <td><%= golongan.gaji %></td>
+        <td><%= golongan.note %></td>
+        <td><%= link_to 'Show', golongan %></td>
+        <td><%= link_to 'Edit', edit_golongan_path(golongan) %></td>
+        <td><%= link_to 'Destroy', golongan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Golongan', new_golongan_path %>
