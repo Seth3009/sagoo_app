@@ -86,9 +86,7 @@ class EmployeesController < ApplicationController
    .joins('left join take_homes on take_homes.employee_id = employees.id')
    .joins('left join locations on locations.id = restos.location_id')
    .group('employees.id')
-   .select('employees.id','employees.name','employees.work_started','employees.acc_no',
-           'employee_groups.name as groupname','employee_groups.salary',
-           'locations.name as location','take_homes.salary as gaji','take_homes.add_income')
+   .select('employees.id','employees.name','employees.work_started','employees.acc_no','employee_groups.name as golongan','employee_groups.salary','locations.name as location','take_homes.salary as gaji','take_homes.add_income')
    
                         
     @attendances = @attendances.where('take_homes.pay_month = ?', Date.parse(params[:year]+"-"+params[:month]+"-1"))
