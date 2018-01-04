@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Add month:</strong>
+  <%= @additional_income.add_month %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @additional_income.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @additional_income.amount %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @additional_income.employee %>
+</p>
+
+<%= link_to 'Edit', edit_additional_income_path(@additional_income) %> |
+<%= link_to 'Back', additional_incomes_path %>

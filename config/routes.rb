@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :take_homes
+  resources :additional_incomes
   resources :employee_groups
   resources :salaries
   resources :attendances
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   #match 'employees/salary_recap/:month' => "employees#generate_attendance", :via => :post
   get 'employee_groups/:id/group_rosters' => 'employee_groups#roster_group', as: :roster_group
   get 'employees/:id/salary_detail/:month&:year' =>'employees#salary_detail', as: :salary_detail
-  
+  get 'employees/:id/tambah_income/:month&:year' =>'employees#tambah_income', as: :tambah_income
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

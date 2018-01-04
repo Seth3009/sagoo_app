@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171230174529) do
+ActiveRecord::Schema.define(version: 20180104112339) do
+
+  create_table "additional_incomes", force: :cascade do |t|
+    t.date     "add_month"
+    t.string   "name"
+    t.decimal  "amount"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "additional_incomes", ["employee_id"], name: "index_additional_incomes_on_employee_id"
 
   create_table "attendances", force: :cascade do |t|
     t.date     "att_month"
@@ -124,5 +135,17 @@ ActiveRecord::Schema.define(version: 20171230174529) do
   end
 
   add_index "salaries", ["employee_id"], name: "index_salaries_on_employee_id"
+
+  create_table "take_homes", force: :cascade do |t|
+    t.integer  "employee_id"
+    t.date     "pay_month"
+    t.decimal  "salary"
+    t.decimal  "add_income"
+    t.decimal  "sal_cut"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "take_homes", ["employee_id"], name: "index_take_homes_on_employee_id"
 
 end

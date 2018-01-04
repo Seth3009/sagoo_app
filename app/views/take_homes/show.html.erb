@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @take_home.employee %>
+</p>
+
+<p>
+  <strong>Pay month:</strong>
+  <%= @take_home.pay_month %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @take_home.salary %>
+</p>
+
+<p>
+  <strong>Add income:</strong>
+  <%= @take_home.add_income %>
+</p>
+
+<p>
+  <strong>Sal cut:</strong>
+  <%= @take_home.sal_cut %>
+</p>
+
+<%= link_to 'Edit', edit_take_home_path(@take_home) %> |
+<%= link_to 'Back', take_homes_path %>

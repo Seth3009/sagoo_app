@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Additional Incomes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Add month</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Employee</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @additional_incomes.each do |additional_income| %>
+      <tr>
+        <td><%= additional_income.add_month %></td>
+        <td><%= additional_income.name %></td>
+        <td><%= additional_income.amount %></td>
+        <td><%= additional_income.employee %></td>
+        <td><%= link_to 'Show', additional_income %></td>
+        <td><%= link_to 'Edit', edit_additional_income_path(additional_income) %></td>
+        <td><%= link_to 'Destroy', additional_income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Additional income', new_additional_income_path %>

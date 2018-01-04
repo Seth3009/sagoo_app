@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Take Homes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Pay month</th>
+      <th>Salary</th>
+      <th>Add income</th>
+      <th>Sal cut</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @take_homes.each do |take_home| %>
+      <tr>
+        <td><%= take_home.employee %></td>
+        <td><%= take_home.pay_month %></td>
+        <td><%= take_home.salary %></td>
+        <td><%= take_home.add_income %></td>
+        <td><%= take_home.sal_cut %></td>
+        <td><%= link_to 'Show', take_home %></td>
+        <td><%= link_to 'Edit', edit_take_home_path(take_home) %></td>
+        <td><%= link_to 'Destroy', take_home, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Take home', new_take_home_path %>

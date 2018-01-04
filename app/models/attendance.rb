@@ -20,7 +20,31 @@ class Attendance < ActiveRecord::Base
           end
         end
       end
-      
     end
+    
   end
+  
+  def self.calculate_take_home(bulan)
+    @employees = Employee.all
+    @employees.each do |employee|
+        @att = Attendance.where('employee_id = ? and att_month = ?', employee.id,bulan)
+        @addt = AdditionalIncome.where('employee_id = ? and add_month = ?', employee.id,bulan)
+        @totalsal = 0
+        @addincome = 0
+        @att.each do |att|
+           @totalsal = @totalsal + (att.day_count * att.group_roster.amount)
+        end
+        @addt.each do |addt|
+            @addincome = @addincome + addt.amount
+        end
+        @ths = TakeHome.where('take_homes.employee_id = ? and pay_month = ?', employee.id,bulan)
+        if @ths.empty? then
+             @takehome = TakeHome.create(employee_id: employee.id, pay_month: bulan, salary: @totalsal, add_income:@addincome, sal_cut: 0)
+        else
+            @ths.each do |th|
+                @takehome = TakeHome.update(th.id, :salary=> @totalsal, :add_income => @addincome, :sal_cut => 0)
+            end
+        end
+    end
+ end
 end

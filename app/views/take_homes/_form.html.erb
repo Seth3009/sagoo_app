@@ -1,0 +1,37 @@
+<%= form_for(@take_home) do |f| %>
+  <% if @take_home.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@take_home.errors.count, "error") %> prohibited this take_home from being saved:</h2>
+
+      <ul>
+      <% @take_home.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_month %><br>
+    <%= f.date_select :pay_month %>
+  </div>
+  <div class="field">
+    <%= f.label :salary %><br>
+    <%= f.text_field :salary %>
+  </div>
+  <div class="field">
+    <%= f.label :add_income %><br>
+    <%= f.text_field :add_income %>
+  </div>
+  <div class="field">
+    <%= f.label :sal_cut %><br>
+    <%= f.text_field :sal_cut %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

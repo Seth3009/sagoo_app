@@ -1,4 +1,14 @@
-
-        <%= render 'att_payment' %>
-        <%= render 'add_payment' %>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-title-arrow">
+        <p><%= link_to salary_recap_path(params[:month],params[:year]) do %></p>
+               <i class="glyphicon glyphicon-chevron-left"></i>
+           <% end %>
+           <%= @employee.name %>
+           <p class="navbar-title-arrow pull-right" style="margin-right: 20px;">Rp. <%= @total.nil? ? 0 : delimiter(@total) %></p>
+    </div>
+  </nav>
+</div><br>
+<%= render 'att_payment' %>
+<%= render 'add_payment' %>
     
