@@ -49,7 +49,7 @@
                 <td><%= link_to att.name, salary_detail_path(att.id,params[:month],params[:year]) %> </td>
                 <td><%= att.work_started %></td>
                 <td><%= att.acc_no %></td>
-                <td><%= att.golongan %></td>
+                <td><%= att.nama %></td>
                 <td><%= att.gaji.nil? ? "0" : delimiter(att.gaji) %> </td>
                 <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
                 <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji)) %> </td>
