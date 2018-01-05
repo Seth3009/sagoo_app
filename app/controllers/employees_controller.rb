@@ -80,7 +80,7 @@ class EmployeesController < ApplicationController
     @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))
             .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id').all
     @additions = AdditionalIncome.where('employee_id=? and add_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))        
-    @total_hadir = @atts.group('attendances.att_month').select('sum (group_rosters.amount * attendances.day_count) as total','attendances.att_month').first
+    @total_hadir = @atts.select('sum (group_rosters.amount * attendances.day_count) as total','attendances.att_month').first
     @total_add = @additions.group('additional_incomes.add_month').select('sum(additional_incomes.amount) as tot_add').first
     @total =(@total_hadir.nil? ? 0 : @total_hadir.total) + (@total_add.nil? ? 0 :@total_add.tot_add)
     
