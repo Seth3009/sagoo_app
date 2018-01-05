@@ -10,7 +10,7 @@ class Attendance < ActiveRecord::Base
       @restos.each do |resto|
          @positions = PositionGroup.where('position_groups.id = ?', resto.position_group_id)
          @positions.each do |position|
-          @grouprosters = GroupRoster.where('group_rosters.employee_group_id = ?', position.employee_group_id)
+          @grouprosters = GroupRoster.where('group_rosters.golongan_id = ?', position.golongan_id)
           @grouprosters.each do |gr|
             @att = self.where('att_month = ? AND group_roster_id = ? AND employee_id = ?',bulan,gr.id,employee.id).first
             if @att.blank? then

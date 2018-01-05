@@ -1,7 +1,7 @@
 
 <div class="container">
   <nav class="navbar navbar-inverse">
-    <p class="navbar-title">Employee Positions Name</p>
+    <p class="navbar-title">Posisi Karyawan</p>
   </nav>
 </div><br>
 <div class="container">
@@ -28,7 +28,7 @@
                     <tr>
                       <td><%= position_group.name %></td>
                       <td><%= position_group.note %></td>
-                      <td><%= position_group.employee_group.name %></td>
+                      <td><%= position_group.golongan.nama %></td>
                       <td align="center", width="15%">
                         <%= link_to  position_group  , class: 'btn btn-info' do %>
                           <i class="glyphicon glyphicon-eye-open"></i>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104155739) do
+ActiveRecord::Schema.define(version: 20180105005938) do
 
   create_table "additional_incomes", force: :cascade do |t|
     t.date     "add_month"
@@ -36,14 +36,6 @@ ActiveRecord::Schema.define(version: 20180104155739) do
   add_index "attendances", ["employee_id"], name: "index_attendances_on_employee_id"
   add_index "attendances", ["group_roster_id"], name: "index_attendances_on_group_roster_id"
 
-  create_table "employee_groups", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "salary"
-    t.text     "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "phone"
@@ -66,14 +58,14 @@ ActiveRecord::Schema.define(version: 20180104155739) do
   end
 
   create_table "group_rosters", force: :cascade do |t|
-    t.integer  "employee_group_id"
     t.integer  "roster_id"
     t.decimal  "amount"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "golongan_id"
   end
 
-  add_index "group_rosters", ["employee_group_id"], name: "index_group_rosters_on_employee_group_id"
+  add_index "group_rosters", ["golongan_id"], name: "index_group_rosters_on_golongan_id"
   add_index "group_rosters", ["roster_id"], name: "index_group_rosters_on_roster_id"
 
   create_table "locations", force: :cascade do |t|
@@ -87,12 +79,12 @@ ActiveRecord::Schema.define(version: 20180104155739) do
   create_table "position_groups", force: :cascade do |t|
     t.string   "name"
     t.text     "note"
-    t.integer  "employee_group_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "golongan_id"
   end
 
-  add_index "position_groups", ["employee_group_id"], name: "index_position_groups_on_employee_group_id"
+  add_index "position_groups", ["golongan_id"], name: "index_position_groups_on_golongan_id"
 
   create_table "restos", force: :cascade do |t|
     t.date     "started"

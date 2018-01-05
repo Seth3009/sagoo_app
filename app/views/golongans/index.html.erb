@@ -1,31 +1,53 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Golongans</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nama</th>
-      <th>Gaji</th>
-      <th>Note</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @golongans.each do |golongan| %>
-      <tr>
-        <td><%= golongan.nama %></td>
-        <td><%= golongan.gaji %></td>
-        <td><%= golongan.note %></td>
-        <td><%= link_to 'Show', golongan %></td>
-        <td><%= link_to 'Edit', edit_golongan_path(golongan) %></td>
-        <td><%= link_to 'Destroy', golongan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Golongan', new_golongan_path %>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <p class="navbar-title">Golongan Karyawan</p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <%= link_to 'Tambah Golongan', new_golongan_path, class: 'btn btn-primary pull-right' %>
+        </div><br>
+        <div class="row">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Salary</th>
+                  <th>Rosters</th>
+                  <th>Note</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+            
+              <tbody>
+                <% @golongans.each do |golongan| %>
+                  <tr>
+                    <td><%= golongan.nama %></td>
+                    <td><%= delimiter(golongan.gaji) %></td>
+                    <td><%= link_to pluralize(golongan.rosters.count, "roster"), roster_group_path(golongan) %></td>
+                    <td><%= golongan.note %></td>
+                    <td align="center", width="15%">
+                        <%= link_to  golongan , class: 'btn btn-info' do %>
+                          <i class="glyphicon glyphicon-eye-open"></i>
+                        <% end %>
+                        <%= link_to edit_golongan_path(golongan), class: 'btn btn-success' do%>
+                          <i class="glyphicon glyphicon-edit"></i>
+                        <% end %>
+                        <%= link_to  golongan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+                          <i class="glyphicon glyphicon-trash"></i>
+                        <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+           </div>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>

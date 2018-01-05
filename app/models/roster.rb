@@ -9,5 +9,5 @@ class Roster < ActiveRecord::Base
   
   def self.all_except(id)
     where.not(id: id)
-end
+  end
 end

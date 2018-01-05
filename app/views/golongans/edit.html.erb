@@ -1,6 +1,17 @@
-<h1>Editing Golongan</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @golongan %> |
-<%= link_to 'Back', golongans_path %>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <p class="navbar-title">Edit Golongan</p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render 'form' %>
+        
+        <%= link_to 'Show', @golongan %> |
+        <%= link_to 'Back', golongans_path %>
+       </div>
+    </div>
+  </div>
+</div>

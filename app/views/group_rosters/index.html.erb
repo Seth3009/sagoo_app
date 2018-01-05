@@ -15,7 +15,7 @@
   <tbody>
     <% @group_rosters.each do |group_roster| %>
       <tr>
-        <td><%= group_roster.employee_group.name %></td>
+        <td><%= group_roster.golongan.nama %></td>
         <td><%= group_roster.roster.hari + ' ' + group_roster.roster.detail %></td>
         <td><%= group_roster.amount %></td>
         <td><%= link_to 'Show', group_roster %></td>

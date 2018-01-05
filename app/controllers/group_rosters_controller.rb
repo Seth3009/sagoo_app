@@ -15,10 +15,12 @@ class GroupRostersController < ApplicationController
   # GET /group_rosters/new
   def new
     @group_roster = GroupRoster.new
+  #  @rosters = GroupRoster.where('rosters.id=?',@group_roster.roster_id)
   end
 
   # GET /group_rosters/1/edit
   def edit
+   # @rosters = Roster.where('rosters.id=?',@group_roster.roster_id)
   end
 
   # POST /group_rosters
@@ -69,6 +71,6 @@ class GroupRostersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_roster_params
-      params.require(:group_roster).permit(:employee_group_id, :roster_id, :amount)
+      params.require(:group_roster).permit(:golongan_id, :roster_id, :amount)
     end
 end

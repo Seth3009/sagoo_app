@@ -27,6 +27,7 @@
           <table class="table table-bordered table-hover table-condensed">
             <thead>
               <tr>
+                <th>Lokasi</th>
                 <th>Nama</th>
                 <th>Mulai Kerja</th>
                 <th>No. Rek</th>
@@ -35,7 +36,8 @@
                 <th>Kehadiran</th>
                 <th>Total Gaji</th>
                 <th>Tambahan</th>
-                <th>Lokasi</th>
+                <th>Take Home</th>
+                
               </tr>
             </thead>
           
@@ -43,15 +45,16 @@
               
               <% @attendances.each do |att| %>
               <tr>
+                <td><%= att.location %> </td>
                 <td><%= link_to att.name, salary_detail_path(att.id,params[:month],params[:year]) %> </td>
                 <td><%= att.work_started %></td>
                 <td><%= att.acc_no %></td>
                 <td><%= att.golongan %></td>
-                <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
                 <td><%= att.gaji.nil? ? "0" : delimiter(att.gaji) %> </td>
+                <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
                 <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji)) %> </td>
                 <td><%= att.add_income.nil? ? 0 : delimiter(att.add_income) %> </td>
-                <td><%= att.location %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji) + (att.add_income.nil? ? 0 : att.add_income)) %> </td>
               </tr>
               <% end %>
               
