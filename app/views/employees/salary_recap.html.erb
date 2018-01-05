@@ -1,1 +1,90 @@
-<h1>Salary Recap</h1>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <p class="navbar-title" style="margin-top: 20px;">Rekap Gaji <%= (Date.parse(params[:year]+"-"+params[:month]+"-1")).strftime("%B %Y") %></p>
+    <p class="pull-right" style="margin-top: 10px; margin-right: 20px;">
+         <%= select_tag 'select_path', options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]}),:prompt => "Pilih Bulan" %>
+         <%= select_tag 'tahun', options_for_select((Date.today.year-5)..(Date.today.year+1)),:prompt => "Pilih Tahun" %>
+         <button type="button" id="myBtn" class="btn btn-primary" style="margin-bottom: 5px;">Refresh</button>
+    </p>
+    <p style='margin-top: 20px; margin-right: 10px', class="navbar-title-arrow pull-right">
+      Periode :
+    </p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-2" style="margin-top: 10px;">
+            <p>Filter tabel: </p>
+          </div>
+          <div class="col-lg-10">
+            <p><input class="form-control" id="myInput" type="text" placeholder="Masukan kata yang dicari"></p>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>Lokasi</th>
+                <th>Nama</th>
+                <th>Mulai Kerja</th>
+                <th>No. Rek</th>
+                <th>Golongan</th>
+                <th>Gaji Pokok</th>
+                <th>Kehadiran</th>
+                <th>Total Gaji</th>
+                <th>Tambahan</th>
+                <th>Take Home</th>
+                
+              </tr>
+            </thead>
+          
+            <tbody id="myTable">
+              
+              <% @attendances.each do |att| %>
+              <tr>
+                <td><%= att.location %> </td>
+                <td><%= link_to att.name, salary_detail_path(att.id,params[:month],params[:year]) %> </td>
+                <td><%= att.work_started %></td>
+                <td><%= att.acc_no %></td>
+                <td><%= att.nama %></td>
+                <td><%= att.gaji.nil? ? "0" : delimiter(att.gaji) %> </td>
+                <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji)) %> </td>
+                <td><%= att.add_income.nil? ? 0 : delimiter(att.add_income) %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji) + (att.add_income.nil? ? 0 : att.add_income)) %> </td>
+              </tr>
+              <% end %>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("myBtn").onclick = function() {myFunction()};
+    function myFunction() {
+    var selected = document.getElementById('select_path').value;
+    var thn = document.getElementById('tahun').value;
+    var url = "/employees/salary_recap/" + selected + "&" + thn
+          if (url) {
+              window.location.replace(url);
+          }
+          return false;
+  }
+
+
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });    
+</script>

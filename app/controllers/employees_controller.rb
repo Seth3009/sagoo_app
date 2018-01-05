@@ -64,6 +64,16 @@ class EmployeesController < ApplicationController
  
   def salary_recap
   
+   Attendance.generate_attendance_form(Date.parse(params[:year]+ "-" + params[:month] + "-1"))
+   Attendance.calculate_take_home(Date.parse(params[:year]+ "-" + params[:month] + "-1"))
+   @attendances = Employee.joins('left join restos on restos.employee_id = employees.id')
+   .joins('left join position_groups on position_groups.id = restos.position_group_id')
+   .joins('left join golongans on golongans.id = position_groups.golongan_id')
+   .joins('left join take_homes on take_homes.employee_id = employees.id')
+   .joins('left join locations on locations.id = restos.location_id')
+   .select('golongans.*','employees.*','locations.name as location', 'take_homes.salary','take_homes.add_income')
+   .where('take_homes.pay_month = ?', Date.parse(params[:year]+"-"+params[:month]+"-1"))
+
   end  
   
   def salary_detail
