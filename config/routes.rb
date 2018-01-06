@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'golongans/:id/group_rosters' => 'golongans#roster_group', as: :roster_group
   get 'employees/:id/salary_detail/:month&:year' =>'employees#salary_detail', as: :salary_detail
   get 'employees/:id/tambah_income/:month&:year' =>'employees#tambah_income', as: :tambah_income
+  post 'employees/:id/add_row/:month&:year' => 'employees#add_row', as: :emp_add_income_row
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -20,7 +20,7 @@
         <%= f.label :roster_id %>
       </div>
       <div class="col-lg-8">
-        <%= f.collection_select :roster_id, Roster.all_except(@rosters.ids).order(:hari,:detail), :id, :formatted_name, prompt: true %>
+        <%= f.collection_select :roster_id, Roster.all_except(@rosters.uniq.pluck(:roster_id)).order(:hari,:detail), :id, :formatted_name, prompt: true %>
       </div>
     </div>
   </div>

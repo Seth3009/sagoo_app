@@ -5,7 +5,7 @@
         <h3 style="margin-bottom: 30px; margin-top: 0px;">Tambahan (Rp. <%= @total_add.nil? ? 0 : delimiter(@total_add) %>)</h3>
       </div>
       <div class="col-lg-7">
-        <%= link_to 'Tambah', tambah_income_path, class: 'btn btn-primary pull-right' %>
+        <%= link_to 'Tambah Income', emp_add_income_row_path, method: :post, class: 'btn btn-primary pull-right' %>
       </div>
     </div>
     
@@ -17,14 +17,20 @@
               <tr>
                 <th>Keterangan</th>
                 <th>Jumlah</th>
+                <th>Action</th>
               </tr>
             </thead>
           
             <tbody>
               <% @additions.each do |add| %>
                 <tr>
-                  <td><%= add.name %></td>
+                  <td><%= best_in_place add, :name %></td>
                   <td><%= best_in_place add, :amount, class:"pull-right" %></td>
+                  <td class="center">
+                    <%= link_to  add, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+                            <i class="glyphicon glyphicon-trash"></i>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

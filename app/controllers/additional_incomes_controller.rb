@@ -28,7 +28,7 @@ class AdditionalIncomesController < ApplicationController
 
     respond_to do |format|
       if @additional_income.save
-        format.html { redirect_to @additional_income, notice: 'Additional income was successfully created.' }
+        format.html { redirect_to :back, notice: 'Additional income was successfully created.' }
         format.json { render :show, status: :created, location: @additional_income }
       else
         format.html { render :new }
@@ -56,10 +56,12 @@ class AdditionalIncomesController < ApplicationController
   def destroy
     @additional_income.destroy
     respond_to do |format|
-      format.html { redirect_to additional_incomes_url, notice: 'Additional income was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Additional income was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

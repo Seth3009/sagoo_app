@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy, :salary_detail]
+  before_action :set_employee, only: [:show, :edit, :update, :destroy, :salary_detail, :tambah_income]
 
   # GET /employees
   # GET /employees.json
@@ -96,7 +96,10 @@ class EmployeesController < ApplicationController
   def tambah_income
     @additional_income = AdditionalIncome.new
   end
-  
+  def add_row
+    AdditionalIncome.add_row_income(params[:id],params[:month],params[:year])
+    redirect_to :back
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.

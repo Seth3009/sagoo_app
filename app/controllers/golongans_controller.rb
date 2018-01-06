@@ -62,10 +62,10 @@ class GolongansController < ApplicationController
   end
 
   def roster_group
-   @rosters = GroupRoster.where('golongan_id = ?', params[:id])
+   @rosters = GroupRoster.where('golongan_id = ?', params[:id]).all
    @golongan = Golongan.find(params[:id])
    @group_roster = GroupRoster.new
- end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

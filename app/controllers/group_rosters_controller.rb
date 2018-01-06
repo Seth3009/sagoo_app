@@ -15,12 +15,10 @@ class GroupRostersController < ApplicationController
   # GET /group_rosters/new
   def new
     @group_roster = GroupRoster.new
-  #  @rosters = GroupRoster.where('rosters.id=?',@group_roster.roster_id)
   end
 
   # GET /group_rosters/1/edit
   def edit
-   # @rosters = Roster.where('rosters.id=?',@group_roster.roster_id)
   end
 
   # POST /group_rosters

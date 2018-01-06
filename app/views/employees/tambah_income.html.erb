@@ -1,31 +1,45 @@
-<%= form_for(@additional_income) do |f| %>
-  <% if @additional_income.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@additional_income.errors.count, "error") %> prohibited this additional_income from being saved:</h2>
-
-      <ul>
-      <% @additional_income.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <p><%= link_to "back", salary_detail_path(params[:id],params[:month],params[:year]) %></p>
+    <p class="navbar-title">Tambahan (<%= @employee.name %>)</p>
+  </nav>
+</div><br>
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= form_for(@additional_income) do |f| %>
+          <% if @additional_income.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@additional_income.errors.count, "error") %> prohibited this additional_income from being saved:</h2>
+        
+              <ul>
+              <% @additional_income.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        
+          <div class="field">
+            <%= f.hidden_field :add_month, :value => Date.parse(params[:year]+ "-" + params[:month] + "-1") %>
+          </div>
+          <div class="field">
+            <%= f.label :Keterangan %><br>
+            <%= f.text_field :name %>
+          </div>
+          <div class="field">
+            <%= f.label :Jumlah %><br>
+            <%= f.text_field :amount %>
+          </div>
+          <div class="field">
+            <%= f.hidden_field :employee_id, :value => params[:id] %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.hidden_field :add_month, :value => Date.parse(params[:year]+ "-" + params[:month] + "-1") %>
   </div>
-  <div class="field">
-    <%= f.label :Keterangan %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :Jumlah %><br>
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :employee_id, :value => params[:id] %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
