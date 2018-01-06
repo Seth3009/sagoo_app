@@ -78,6 +78,7 @@ class EmployeesController < ApplicationController
   
   def salary_detail
     #@pots = PotonganEmployee.where('employee_id = ?', @employee)
+    PotonganEmployee.update_amount_kasbon(@employee,params[:month],params[:year])
     @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))
             .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
             .joins('left join rosters on rosters.id = group_rosters.roster_id').all
@@ -97,12 +98,16 @@ class EmployeesController < ApplicationController
     
     @pots = PotonganEmployee.where('potongan_employees.employee_id=? and pot_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))        
             .joins('left outer join kasbons on kasbons.id = potongan_employees.kasbon_id')
+            .select('potongan_employees.*', 'kasbons.nama as kasbonname')
+    @kasbon = Kasbon.where('employee_id = ? and sisa > ?', @employee, 0).first
     @total_pot = 0
     @pots.each do |pot|
       @total_pot = @total_pot + pot.amount
     end
     
     @total = @total_hadir + @total_add - @total_pot
+    
+    
     
   end
   

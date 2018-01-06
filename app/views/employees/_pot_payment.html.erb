@@ -27,15 +27,19 @@
                    <tr>
                        <td>
                          <% if pot.nama_potongan == "Kasbon" %>
-                           <%= link_to pot.nama_potongan, employee_kasbon_path(params[:id]) %>
+                           <% if @kasbon.nil? == true %>
+                             <%= link_to pot.nama_potongan, new_kasbon_path %>
+                           <% else %>
+                             <%= link_to pot.nama_potongan, kasbon_path(@kasbon.id) %>
+                           <% end %>
                          <% else %>
                            <%= best_in_place pot, :nama_potongan %>
                          <% end %>
                        </td>
                        <td>
-                         <% if pot.kasbon.present? %>
-                           <%= pot.kasbon.nama %> (Sisa: <%= delimiter(pot.kasbon.sisa) %> )
-                         <% end %>
+                           <% if pot.nama_potongan == "Kasbon" %>
+                             <%= best_in_place pot, :kasbon_id, :as => :select, :collection => Kasbon.kasbon_to_hash(@employee) %>
+                           <% end %>
                        </td>
                        <td style="text-align: right;">
                          <% if pot.kasbon.present? %>

@@ -11,6 +11,9 @@ class KasbonsController < ApplicationController
   # GET /kasbons/1
   # GET /kasbons/1.json
   def show
+    @employee = Employee.find(@kasbon.employee_id)
+    @details = DetailKasbon.where('kasbon_id = ?', @kasbon).order(:tanggal_bayar)
+    @detail_kasbon = DetailKasbon.new
   end
 
   # GET /kasbons/new

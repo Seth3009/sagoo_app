@@ -28,7 +28,8 @@ class DetailKasbonsController < ApplicationController
 
     respond_to do |format|
       if @detail_kasbon.save
-        format.html { redirect_to @detail_kasbon, notice: 'Detail kasbon was successfully created.' }
+        Kasbon.sum_sisa
+        format.html { redirect_to :back, notice: 'Detail kasbon was successfully created.' }
         format.json { render :show, status: :created, location: @detail_kasbon }
       else
         format.html { render :new }
@@ -55,8 +56,9 @@ class DetailKasbonsController < ApplicationController
   # DELETE /detail_kasbons/1.json
   def destroy
     @detail_kasbon.destroy
+    Kasbon.sum_sisa
     respond_to do |format|
-      format.html { redirect_to detail_kasbons_url, notice: 'Detail kasbon was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Detail kasbon was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

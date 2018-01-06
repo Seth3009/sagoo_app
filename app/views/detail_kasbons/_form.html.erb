@@ -13,17 +13,14 @@
 
   <div class="field">
     <%= f.label :tanggal_bayar %><br>
-    <%= f.date_select :tanggal_bayar %>
+    <%= f.date_select(:tanggal_bayar, discard_day: true, order:[:month,:year])  %>
+    <%= f.hidden_field :kasbon_id, :value => params[:id] %>
   </div>
   <div class="field">
     <%= f.label :jumlah_bayar %><br>
     <%= f.text_field :jumlah_bayar %>
   </div>
-  <div class="field">
-    <%= f.label :sisa %><br>
-    <%= f.text_field :sisa %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Simpan Pambayaran" %>
   </div>
 <% end %>
