@@ -21,14 +21,24 @@
           
             <tbody>
               <% @atts.each do |attendance| %>
-                <tr>
+                <% if attendance.group_roster.roster.tipe == "Minus" %>
+                  <tr style="background-color: #D98880;">
+                <% else %>
+                  <tr>
+                <% end %>
                   <td>
                       <%= attendance.group_roster.roster.hari %>
                       <%= attendance.group_roster.roster.detail %>
                   </td>
                   <td style="text-align: right;"><%= delimiter(attendance.group_roster.amount) %></td>
                   <td style="text-align: right;"><%= best_in_place attendance, :day_count %></td>
-                  <td style="text-align: right;"><%= delimiter(attendance.day_count * attendance.group_roster.amount) %></td>
+                  <td style="text-align: right;">
+                    <% if attendance.group_roster.roster.tipe == "Plus" %>
+                      <%= delimiter(attendance.day_count * attendance.group_roster.amount) %>
+                    <% else %>
+                      <%= delimiter(attendance.day_count * attendance.group_roster.amount * -1) %>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

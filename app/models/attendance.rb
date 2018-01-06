@@ -28,11 +28,17 @@ class Attendance < ActiveRecord::Base
     @employees = Employee.all
     @employees.each do |employee|
         @att = Attendance.where('employee_id = ? and att_month = ?', employee.id,bulan)
+                .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
+                .joins('left join rosters on rosters.id = group_rosters.roster_id').all
         @addt = AdditionalIncome.where('employee_id = ? and add_month = ?', employee.id,bulan)
         @totalsal = 0
         @addincome = 0
         @att.each do |att|
-           @totalsal = @totalsal + (att.day_count * att.group_roster.amount)
+         if att.group_roster.roster.tipe == "Minus"
+           @totalsal = @totalsal - (att.day_count * att.group_roster.amount)
+         else
+           @totalsal = @totalsal + (att.day_count * att.group_roster.amount)     
+         end
         end
         @addt.each do |addt|
             @addincome = @addincome + addt.amount

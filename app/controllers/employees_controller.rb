@@ -78,10 +78,15 @@ class EmployeesController < ApplicationController
   
   def salary_detail
     @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))
-            .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id').all
+            .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
+            .joins('left join rosters on rosters.id = group_rosters.roster_id').all
     @total_hadir = 0      
     @atts.each do |att|
-      @total_hadir = @total_hadir + (att.group_roster.amount * att.day_count)
+      if att.group_roster.roster.tipe == "Minus"
+        @total_hadir = @total_hadir - (att.group_roster.amount * att.day_count) 
+      else
+        @total_hadir = @total_hadir + (att.group_roster.amount * att.day_count)
+      end
     end
     @additions = AdditionalIncome.where('employee_id=? and add_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))        
     @total_add = 0

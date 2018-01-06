@@ -13,15 +13,23 @@
         </div>
       <% end %>
       
-      <div class="form-group">
+      <div class="row">
+        <div class="control-label col-sm-2">
+          <%= f.label :tipe %><br>
+        </div>
+        <div class="col-sm-10">
+          <%= f.select :tipe, ["Plus","Minus"], class:"form-control", autofocus: true %>
+        </div>
+      </div>
+      <div class="row">
         <div class="control-label col-sm-2">
           <%= f.label :hari %><br>
         </div>
         <div class="col-sm-10">
-          <%= f.text_field :hari, class:"form-control", placeholder: "Masukan tipe hari kerja", autofocus: true %>
+          <%= f.text_field :hari, class:"form-control", placeholder: "Masukan tipe hari kerja" %>
         </div>
       </div>
-      <div class="form-group">
+      <div class="row">
         <div class="control-label col-sm-2">
           <%= f.label :detail %><br>
         </div>
@@ -29,7 +37,7 @@
           <%= f.text_field :detail, class:"form-control", placeholder: "Masukan tipe jam kerja" %>
         </div>
       </div>
-      <div class="form-group">
+      <div class="row">
         <div class="control-label col-sm-2">
           <%= f.label :note %><br>
         </div>
@@ -38,7 +46,7 @@
         </div>
       </div>
       &nbsp
-      <div class="form-group">
+      <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
           <%= f.submit "Simpan", class: 'btn-primary btn-lg pull-right' %>
         </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180105005938) do
+ActiveRecord::Schema.define(version: 20180106013535) do
 
   create_table "additional_incomes", force: :cascade do |t|
     t.date     "add_month"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20180105005938) do
     t.text     "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "tipe"
   end
 
   create_table "salaries", force: :cascade do |t|

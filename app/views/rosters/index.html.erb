@@ -27,7 +27,11 @@
               
                 <tbody>
                   <% @rosters.each do |roster| %>
-                    <tr>
+                    <% if roster.tipe == "Minus" %>
+                      <tr style="background-color: #D98880;">
+                    <% else %>
+                      <tr>
+                    <% end %>
                       <td><%= roster.hari %></td>
                       <td><%= roster.detail %></td>
                       <td><%= roster.note %></td>
