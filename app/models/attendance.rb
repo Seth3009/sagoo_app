@@ -27,6 +27,22 @@ class Attendance < ActiveRecord::Base
   def self.calculate_take_home(bulan)
     @employees = Employee.all
     @employees.each do |employee|
+        @pot = Potongan.all 
+        @pes = PotonganEmployee.where('employee_id = ? and pot_month = ?', employee.id,bulan)
+        @tot_pot = 0
+        if @pes.empty?
+            if @pot.nil? == false
+                @pot.each do |pot|
+                    @emp_pot = PotonganEmployee.create(pot_month:  bulan, employee_id: employee.id, nama_potongan:  pot.nama)
+                end
+            end
+        else
+            @pes.each do |pes|
+                @tot_pot =@tot_pot + pes.amount
+            end
+        end
+        
+        
         @att = Attendance.where('employee_id = ? and att_month = ?', employee.id,bulan)
                 .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
                 .joins('left join rosters on rosters.id = group_rosters.roster_id').all
@@ -48,9 +64,9 @@ class Attendance < ActiveRecord::Base
              @takehome = TakeHome.create(employee_id: employee.id, pay_month: bulan, salary: @totalsal, add_income:@addincome, sal_cut: 0)
         else
             @ths.each do |th|
-                @takehome = TakeHome.update(th.id, :salary=> @totalsal, :add_income => @addincome, :sal_cut => 0)
+                @takehome = TakeHome.update(th.id, :salary=> @totalsal, :add_income => @addincome, :sal_cut => @tot_pot)
             end
         end
     end
- end
+  end
 end

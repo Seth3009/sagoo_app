@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-lg-5">
+        <h3 style="margin-bottom: 30px; margin-top: 0px;">Potongan (Rp. <%= delimiter(@total_pot) %>)</h3>
+      </div>
+      <div class="col-lg-7">
+        <%= link_to 'Potongan', emp_add_potong_row_path, method: :post, class: 'btn btn-primary pull-right' %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>Keterangan</th>
+                <th>Detail</th>
+                <th>Jumlah</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+               <% @pots.each do |pot| %>
+                   <tr>
+                       <td>
+                         <% if pot.nama_potongan == "Kasbon" %>
+                           <%= link_to pot.nama_potongan, employee_kasbon_path(params[:id]) %>
+                         <% else %>
+                           <%= best_in_place pot, :nama_potongan %>
+                         <% end %>
+                       </td>
+                       <td>
+                         <% if pot.kasbon.present? %>
+                           <%= pot.kasbon.nama %> (Sisa: <%= delimiter(pot.kasbon.sisa) %> )
+                         <% end %>
+                       </td>
+                       <td style="text-align: right;">
+                         <% if pot.kasbon.present? %>
+                           <%= pot.amount %>
+                         <% else %>
+                           <%= best_in_place pot, :amount, :display_with => :number_with_delimiter %>
+                         <% end %>
+                       </td>
+                       <td class="center">
+                          <%= link_to  pot, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+                                  <i class="glyphicon glyphicon-trash"></i>
+                          <% end %>
+                       </td>
+                   </tr>
+               <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

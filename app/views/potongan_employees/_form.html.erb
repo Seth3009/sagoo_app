@@ -1,0 +1,37 @@
+<%= form_for(@potongan_employee) do |f| %>
+  <% if @potongan_employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@potongan_employee.errors.count, "error") %> prohibited this potongan_employee from being saved:</h2>
+
+      <ul>
+      <% @potongan_employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pot_month %><br>
+    <%= f.date_select :pot_month %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nama_potongan %><br>
+    <%= f.text_field :nama_potongan %>
+  </div>
+  <div class="field">
+    <%= f.label :kasbon_id %><br>
+    <%= f.text_field :kasbon_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

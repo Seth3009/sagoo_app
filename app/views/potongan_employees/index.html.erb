@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Potongan Employees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pot month</th>
+      <th>Employee</th>
+      <th>Potongan</th>
+      <th>Kasbon</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @potongan_employees.each do |potongan_employee| %>
+      <tr>
+        <td><%= potongan_employee.pot_month %></td>
+        <td><%= potongan_employee.employee.name %></td>
+        <td><%= potongan_employee.nama_potongan %></td>
+        <td><%= potongan_employee.kasbon.nil? ? " " : potongan_employee.kasbon.nama %></td>
+        <td><%= potongan_employee.amount %></td>
+        <td><%= link_to 'Show', potongan_employee %></td>
+        <td><%= link_to 'Edit', edit_potongan_employee_path(potongan_employee) %></td>
+        <td><%= link_to 'Destroy', potongan_employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Potongan employee', new_potongan_employee_path %>

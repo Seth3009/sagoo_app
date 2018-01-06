@@ -1,0 +1,45 @@
+<%= form_for(@kasbon) do |f| %>
+  <% if @kasbon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kasbon.errors.count, "error") %> prohibited this kasbon from being saved:</h2>
+
+      <ul>
+      <% @kasbon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nama %><br>
+    <%= f.text_field :nama %>
+  </div>
+  <div class="field">
+    <%= f.label :tanggal_pinjam %><br>
+    <%= f.date_select :tanggal_pinjam %>
+  </div>
+  <div class="field">
+    <%= f.label :jumlah_pinjam %><br>
+    <%= f.text_field :jumlah_pinjam %>
+  </div>
+  <div class="field">
+    <%= f.label :tanggal_bayar %><br>
+    <%= f.text_field :tanggal_bayar %>
+  </div>
+  <div class="field">
+    <%= f.label :jumlah_bayar %><br>
+    <%= f.text_field :jumlah_bayar %>
+  </div>
+  <div class="field">
+    <%= f.label :sisa %><br>
+    <%= f.text_field :sisa %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

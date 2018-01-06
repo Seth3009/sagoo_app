@@ -57,6 +57,8 @@
                 <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji)) %> </td>
                 <td><%= att.add_income.nil? ? 0 : delimiter(att.add_income) %> </td>
                 <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji) + (att.add_income.nil? ? 0 : att.add_income)) %> </td>
+                <td><%= att.sal_cut.nil? ? "0" : delimiter(att.sal_cut) %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji) + (att.add_income.nil? ? 0 : att.add_income) - (att.sal_cut.nil? ? 0 : att.sal_cut)) %> </td>
               </tr>
               <% end %>
               

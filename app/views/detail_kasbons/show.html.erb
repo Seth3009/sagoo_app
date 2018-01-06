@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tanggal bayar:</strong>
+  <%= @detail_kasbon.tanggal_bayar %>
+</p>
+
+<p>
+  <strong>Jumlah bayar:</strong>
+  <%= @detail_kasbon.jumlah_bayar %>
+</p>
+
+<p>
+  <strong>Sisa:</strong>
+  <%= @detail_kasbon.sisa %>
+</p>
+
+<%= link_to 'Edit', edit_detail_kasbon_path(@detail_kasbon) %> |
+<%= link_to 'Back', detail_kasbons_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Detail Kasbons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tanggal bayar</th>
+      <th>Jumlah bayar</th>
+      <th>Sisa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detail_kasbons.each do |detail_kasbon| %>
+      <tr>
+        <td><%= detail_kasbon.tanggal_bayar %></td>
+        <td><%= detail_kasbon.jumlah_bayar %></td>
+        <td><%= detail_kasbon.sisa %></td>
+        <td><%= link_to 'Show', detail_kasbon %></td>
+        <td><%= link_to 'Edit', edit_detail_kasbon_path(detail_kasbon) %></td>
+        <td><%= link_to 'Destroy', detail_kasbon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detail kasbon', new_detail_kasbon_path %>

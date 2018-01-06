@@ -1,0 +1,29 @@
+<%= form_for(@detail_kasbon) do |f| %>
+  <% if @detail_kasbon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@detail_kasbon.errors.count, "error") %> prohibited this detail_kasbon from being saved:</h2>
+
+      <ul>
+      <% @detail_kasbon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tanggal_bayar %><br>
+    <%= f.date_select :tanggal_bayar %>
+  </div>
+  <div class="field">
+    <%= f.label :jumlah_bayar %><br>
+    <%= f.text_field :jumlah_bayar %>
+  </div>
+  <div class="field">
+    <%= f.label :sisa %><br>
+    <%= f.text_field :sisa %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

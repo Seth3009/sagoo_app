@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :detail_kasbons
+  resources :potongan_employees
+  resources :kasbons
+  resources :potongans
   resources :golongans
   #get '*path' => redirect('/')
   resources :take_homes
@@ -24,7 +28,9 @@ Rails.application.routes.draw do
   get 'golongans/:id/group_rosters' => 'golongans#roster_group', as: :roster_group
   get 'employees/:id/salary_detail/:month&:year' =>'employees#salary_detail', as: :salary_detail
   get 'employees/:id/tambah_income/:month&:year' =>'employees#tambah_income', as: :tambah_income
+  get 'employees/:id/kasbon' => 'employees#kasbon', as: :employee_kasbon
   post 'employees/:id/add_row/:month&:year' => 'employees#add_row', as: :emp_add_income_row
+  post 'employees/:id/add_potong/:month&:year' => 'employees#add_potong', as: :emp_add_potong_row
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

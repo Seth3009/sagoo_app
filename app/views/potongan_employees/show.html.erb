@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pot month:</strong>
+  <%= @potongan_employee.pot_month %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @potongan_employee.employee %>
+</p>
+
+<p>
+  <strong>Potongan:</strong>
+  <%= @potongan_employee.potongan %>
+</p>
+
+<p>
+  <strong>Kasbon:</strong>
+  <%= @potongan_employee.kasbon %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @potongan_employee.amount %>
+</p>
+
+<%= link_to 'Edit', edit_potongan_employee_path(@potongan_employee) %> |
+<%= link_to 'Back', potongan_employees_path %>

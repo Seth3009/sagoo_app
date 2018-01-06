@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nama:</strong>
+  <%= @kasbon.nama %>
+</p>
+
+<p>
+  <strong>Tanggal pinjam:</strong>
+  <%= @kasbon.tanggal_pinjam %>
+</p>
+
+<p>
+  <strong>Jumlah pinjam:</strong>
+  <%= @kasbon.jumlah_pinjam %>
+</p>
+
+<p>
+  <strong>Tanggal bayar:</strong>
+  <%= @kasbon.tanggal_bayar %>
+</p>
+
+<p>
+  <strong>Jumlah bayar:</strong>
+  <%= @kasbon.jumlah_bayar %>
+</p>
+
+<p>
+  <strong>Sisa:</strong>
+  <%= @kasbon.sisa %>
+</p>
+
+<%= link_to 'Edit', edit_kasbon_path(@kasbon) %> |
+<%= link_to 'Back', kasbons_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106013535) do
+ActiveRecord::Schema.define(version: 20180106051301) do
 
   create_table "additional_incomes", force: :cascade do |t|
     t.date     "add_month"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20180106013535) do
 
   add_index "attendances", ["employee_id"], name: "index_attendances_on_employee_id"
   add_index "attendances", ["group_roster_id"], name: "index_attendances_on_group_roster_id"
+
+  create_table "detail_kasbons", force: :cascade do |t|
+    t.date     "tanggal_bayar"
+    t.decimal  "jumlah_bayar"
+    t.decimal  "sisa"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "kasbon_id"
+  end
+
+  add_index "detail_kasbons", ["kasbon_id"], name: "index_detail_kasbons_on_kasbon_id"
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -68,6 +79,20 @@ ActiveRecord::Schema.define(version: 20180106013535) do
   add_index "group_rosters", ["golongan_id"], name: "index_group_rosters_on_golongan_id"
   add_index "group_rosters", ["roster_id"], name: "index_group_rosters_on_roster_id"
 
+  create_table "kasbons", force: :cascade do |t|
+    t.string   "nama"
+    t.date     "tanggal_pinjam"
+    t.decimal  "jumlah_pinjam"
+    t.string   "tanggal_bayar"
+    t.decimal  "jumlah_bayar"
+    t.decimal  "sisa"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "employee_id"
+  end
+
+  add_index "kasbons", ["employee_id"], name: "index_kasbons_on_employee_id"
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -85,6 +110,25 @@ ActiveRecord::Schema.define(version: 20180106013535) do
   end
 
   add_index "position_groups", ["golongan_id"], name: "index_position_groups_on_golongan_id"
+
+  create_table "potongan_employees", force: :cascade do |t|
+    t.date     "pot_month"
+    t.integer  "employee_id"
+    t.integer  "kasbon_id"
+    t.decimal  "amount",        default: 0.0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "nama_potongan"
+  end
+
+  add_index "potongan_employees", ["employee_id"], name: "index_potongan_employees_on_employee_id"
+  add_index "potongan_employees", ["kasbon_id"], name: "index_potongan_employees_on_kasbon_id"
+
+  create_table "potongans", force: :cascade do |t|
+    t.string   "nama"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "restos", force: :cascade do |t|
     t.date     "started"

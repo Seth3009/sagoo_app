@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy, :salary_detail, :tambah_income]
+  before_action :set_employee, only: [:show, :edit, :update, :destroy, :salary_detail, :tambah_income, :add_potong, :kasbon]
 
   # GET /employees
   # GET /employees.json
@@ -71,12 +71,13 @@ class EmployeesController < ApplicationController
    .joins('left join golongans on golongans.id = position_groups.golongan_id')
    .joins('left join take_homes on take_homes.employee_id = employees.id')
    .joins('left join locations on locations.id = restos.location_id')
-   .select('golongans.*','employees.*','locations.name as location', 'take_homes.salary','take_homes.add_income')
+   .select('golongans.*','employees.*','locations.name as location', 'take_homes.salary','take_homes.add_income','take_homes.sal_cut')
    .where('take_homes.pay_month = ?', Date.parse(params[:year]+"-"+params[:month]+"-1"))
 
   end  
   
   def salary_detail
+    #@pots = PotonganEmployee.where('employee_id = ?', @employee)
     @atts = Attendance.where('attendances.employee_id = ? AND attendances.att_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))
             .joins('left join group_rosters on group_rosters.id = attendances.group_roster_id')
             .joins('left join rosters on rosters.id = group_rosters.roster_id').all
@@ -94,7 +95,14 @@ class EmployeesController < ApplicationController
       @total_add = @total_add + add.amount
     end
     
-    @total =(@total_hadir.nil? ? 0 : @total_hadir) + (@total_add.nil? ? 0 :@total_add)
+    @pots = PotonganEmployee.where('potongan_employees.employee_id=? and pot_month = ?', @employee, Date.parse(params[:year]+ "-" + params[:month] + "-1"))        
+            .joins('left outer join kasbons on kasbons.id = potongan_employees.kasbon_id')
+    @total_pot = 0
+    @pots.each do |pot|
+      @total_pot = @total_pot + pot.amount
+    end
+    
+    @total = @total_hadir + @total_add - @total_pot
     
   end
   
@@ -105,6 +113,15 @@ class EmployeesController < ApplicationController
     AdditionalIncome.add_row_income(params[:id],params[:month],params[:year])
     redirect_to :back
   end
+  def add_potong
+    PotonganEmployee.add_row_potong(params[:id],params[:month],params[:year])
+    redirect_to :back
+  end
+  
+  def kasbon
+    @kasbons = Kasbon.where('employee_id = ?', @employee)
+  end
+  
   
   private
     # Use callbacks to share common setup or constraints between actions.
