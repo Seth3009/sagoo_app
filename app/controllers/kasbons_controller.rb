@@ -32,7 +32,7 @@ class KasbonsController < ApplicationController
 
     respond_to do |format|
       if @kasbon.save
-        format.html { redirect_to @kasbon, notice: 'Kasbon was successfully created.' }
+        format.html { redirect_to kasbons_path, notice: 'Kasbon was successfully created.' }
         format.json { render :show, status: :created, location: @kasbon }
       else
         format.html { render :new }
