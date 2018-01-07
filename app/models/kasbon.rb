@@ -1,6 +1,7 @@
 class Kasbon < ActiveRecord::Base
     has_many :potongan_employees
     has_many :detail_kasbons
+    belongs_to :employee
     
     def self.sum_sisa
         @kasbons = self.all

@@ -1,6 +1,12 @@
 <div class="container">
   <nav class="navbar navbar-inverse">
-    <p class="navbar-title"><%= @employee.name  %> (<%= @kasbon.nama %>)</p><p class="navbar-title pull-right"><%= delimiter(@kasbon.sisa) %></p>
+    <div class="navbar-title-arrow">
+      <p><%= link_to kasbons_path do %></p>
+          <i class="glyphicon glyphicon-chevron-left"></i>
+      <% end %>
+      <%= @employee.name  %> (<%= @kasbon.nama %>)
+      <p class="navbar-title pull-right"><%= delimiter(@kasbon.sisa) %></p>
+    </div>
   </nav>
 </div><br>
 <div class="container">

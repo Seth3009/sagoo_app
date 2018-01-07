@@ -10,36 +10,42 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :employee_id %><br>
-    <%= f.text_field :employee_id %>
+  
+  <div class="row">
+    <div class="control-label col-sm-3">
+      <%= f.label :employee_id, "Karyawan :" %><br>
+    </div>
+    <div class="col-sm-9">
+      <%= f.collection_select :employee_id,  Employee.all.order(:name),:id,:name, prompt: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :nama %><br>
-    <%= f.text_field :nama %>
+  <div class="row">
+    <div class="control-label col-sm-3">
+      <%= f.label :nama, "Keterangan :" %><br>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_field :nama,  placeholder: "Kasbon untuk keperluan?" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tanggal_pinjam %><br>
-    <%= f.date_select :tanggal_pinjam %>
+  <div class="row">
+    <div class="control-label col-sm-3">
+      <%= f.label :tanggal_pinjam, "Tanggal Peminjaman : " %><br>
+    </div>
+    <div class="col-sm-9">
+      <%= f.date_select :tanggal_pinjam, order: [:day,:month,:year]%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :jumlah_pinjam %><br>
-    <%= f.text_field :jumlah_pinjam %>
+  <div class="row">
+    <div class="control-label col-sm-3">
+       <%= f.label :jumlah_pinjam, "Jumlah Peminjaman :" %><br>
+    </div>
+    <div class="col-sm-9">
+      <%= f.text_field :jumlah_pinjam %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tanggal_bayar %><br>
-    <%= f.text_field :tanggal_bayar %>
-  </div>
-  <div class="field">
-    <%= f.label :jumlah_bayar %><br>
-    <%= f.text_field :jumlah_bayar %>
-  </div>
-  <div class="field">
-    <%= f.label :sisa %><br>
-    <%= f.text_field :sisa %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-9">
+      <%= f.submit "Simpan", class: 'btn-primary btn-lg pull-right' %>
+    </div>
   </div>
 <% end %>

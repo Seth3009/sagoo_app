@@ -43,7 +43,7 @@
                        </td>
                        <td style="text-align: right;">
                          <% if pot.kasbon.present? %>
-                           <%= pot.amount %>
+                           <%= delimiter(pot.amount) %>
                          <% else %>
                            <%= best_in_place pot, :amount, :display_with => :number_with_delimiter %>
                          <% end %>
