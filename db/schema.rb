@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505034035) do
+ActiveRecord::Schema.define(version: 20180505040512) do
 
   create_table "additional_incomes", force: :cascade do |t|
     t.date     "add_month"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180505034035) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "gp"
+    t.string   "golongan"
   end
 
   create_table "golongans", force: :cascade do |t|

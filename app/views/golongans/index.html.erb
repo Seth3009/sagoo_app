@@ -16,7 +16,6 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Salary</th>
                   <th>Rosters</th>
                   <th>Note</th>
                   <th>Actions</th>
@@ -27,7 +26,6 @@
                 <% @golongans.each do |golongan| %>
                   <tr>
                     <td><%= golongan.nama %></td>
-                    <td><%= delimiter(golongan.gaji) %></td>
                     <td><%= link_to pluralize(golongan.rosters.count, "roster"), roster_group_path(golongan) %></td>
                     <td><%= golongan.note %></td>
                     <td align="center", width="15%">

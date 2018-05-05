@@ -29,7 +29,7 @@
               <tr>
                 <th>Lokasi</th>
                 <th>Nama</th>
-                <th>Mulai Kerja</th>
+                <!--<th>Mulai Kerja</th>-->
                 <th>No. Rek</th>
                 <th>Golongan</th>
                 <th>Gaji Pokok</th>
@@ -39,6 +39,7 @@
                 <th>Total</th>
                 <th>Potongan</th>
                 <th>Take Home</th>
+                <th>Detail</th>
                 
               </tr>
             </thead>
@@ -49,16 +50,21 @@
               <tr>
                 <td><%= att.location %> </td>
                 <td><%= link_to att.name, salary_detail_path(att.id,params[:month],params[:year]) %> </td>
-                <td><%= att.work_started %></td>
+                <!--<td>%= att.work_started %></td>-->
                 <td><%= att.acc_no %></td>
-                <td><%= att.nama %></td>
-                <td><%= att.gaji.nil? ? "0" : delimiter(att.gaji) %> </td>
+                <td><%= att.golongan %></td>
+                <td><%= att.gp.nil? ? "0" : delimiter(att.gp) %> </td>
                 <td><%= att.salary.nil? ? "0" : delimiter(att.salary) %> </td>
-                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji)) %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gp.nil? ? 0 : att.gp.to_d)) %> </td>
                 <td><%= att.add_income.nil? ? 0 : delimiter(att.add_income) %> </td>
-                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji) + (att.add_income.nil? ? 0 : att.add_income)) %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gp.nil? ? 0 : att.gp.to_d) + (att.add_income.nil? ? 0 : att.add_income)) %> </td>
                 <td><%= att.sal_cut.nil? ? "0" : delimiter(att.sal_cut) %> </td>
-                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gaji.nil? ? 0 : att.gaji) + (att.add_income.nil? ? 0 : att.add_income) - (att.sal_cut.nil? ? 0 : att.sal_cut)) %> </td>
+                <td><%= delimiter((att.salary.nil? ? 0 : att.salary) + (att.gp.nil? ? 0 : att.gp.to_d) + (att.add_income.nil? ? 0 : att.add_income) - (att.sal_cut.nil? ? 0 : att.sal_cut)) %> </td>
+                <td align="center">
+                    <%= link_to  salary_detail_path(att.id,params[:month],params[:year])  , class: 'btn btn-info' do %>
+                      <i class="glyphicon glyphicon-eye-open"></i>
+                    <% end %>
+                </td>
               </tr>
               <% end %>
               

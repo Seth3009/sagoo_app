@@ -10,6 +10,8 @@ class RestosController < ApplicationController
   # GET /restos/1
   # GET /restos/1.json
   def show
+    
+   # redirect_to location_path(params[:location_id])
   end
 
   # GET /restos/new
@@ -46,7 +48,7 @@ class RestosController < ApplicationController
   def update
     respond_to do |format|
       if @resto.update(resto_params)
-        format.html { redirect_to @resto, notice: 'Resto was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Resto was successfully updated.' }
         format.json { render :show, status: :ok, location: @resto }
       else
         format.html { render :edit }

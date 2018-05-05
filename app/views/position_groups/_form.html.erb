@@ -19,10 +19,10 @@
     <%= f.label :note %><br>
     <%= f.text_area :note %>
   </div>
-  <div class="field">
-    <%= f.label :golongan_id %><br>
-    <%= f.collection_select :golongan_id, Golongan.all.order(:nama), :id, :nama, prompt: true %>
-  </div>
+  <!--<div class="field">-->
+  <!--  <%= f.label :golongan_id %><br>-->
+  <!--  <%= f.collection_select :golongan_id, Golongan.all.order(:nama), :id, :nama, prompt: true %>-->
+  <!--</div>-->
   <div class="actions">
     <%= f.submit %>
   </div>
