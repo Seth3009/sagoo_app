@@ -29,6 +29,16 @@
         </p>
         
         <p>
+          <strong>Gaji Pokok:</strong>
+          <%= @employee.gp.nil? ? 0 : delimiter(@employee.gp) %>
+        </p>
+        
+        <p>
+          <strong>Golongan:</strong>
+          <%= @employee.golongan.nil? ? "-" : @employee.golongan %>
+        </p>
+        
+        <p>
           <strong>Pob:</strong>
           <%= @employee.pob %>
         </p>
