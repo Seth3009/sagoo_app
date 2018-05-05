@@ -21,6 +21,7 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Acc no</th>
+                    <th>GP</th>
                     <th>Pob</th>
                     <th>Dob</th>
                     <th>Work started</th>
@@ -36,6 +37,7 @@
                       <td><%= employee.phone %></td>
                       <td><%= employee.email %></td>
                       <td><%= employee.acc_no %></td>
+                      <td><%= number_with_delimiter(employee.gp) %></td>
                       <td><%= employee.pob %></td>
                       <td><%= employee.dob %></td>
                       <td><%= employee.work_started %></td>
