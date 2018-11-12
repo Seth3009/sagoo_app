@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505040512) do
+ActiveRecord::Schema.define(version: 20181112131936) do
 
   create_table "additional_incomes", force: :cascade do |t|
     t.date     "add_month"
@@ -186,5 +186,12 @@ ActiveRecord::Schema.define(version: 20180505040512) do
   end
 
   add_index "take_homes", ["employee_id"], name: "index_take_homes_on_employee_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
